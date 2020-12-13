@@ -1,0 +1,9 @@
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\bin\Debug\netstandard2.0\Sonny.Domain.deps.json
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\bin\Debug\netstandard2.0\Sonny.Domain.dll
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\bin\Debug\netstandard2.0\Sonny.Domain.pdb
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\obj\Debug\netstandard2.0\Sonny.Domain.csprojAssemblyReference.cache
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\obj\Debug\netstandard2.0\Sonny.Domain.AssemblyInfoInputs.cache
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\obj\Debug\netstandard2.0\Sonny.Domain.AssemblyInfo.cs
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\obj\Debug\netstandard2.0\Sonny.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\obj\Debug\netstandard2.0\Sonny.Domain.dll
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Domain\obj\Debug\netstandard2.0\Sonny.Domain.pdb
