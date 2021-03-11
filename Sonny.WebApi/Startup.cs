@@ -10,6 +10,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Sonny.Domain.Entities.Technician.Sonny.Information;
+using Sonny.Domain.Entities.Technician.Sonny.Information.Network.Interfaces;
+using Sonny.Domain.Entities.Technician.Sonny.Information.Network.Logic;
+using Microsoft.AspNetCore.Mvc.Cors;
+using Microsoft.EntityFrameworkCore;
+
+using Sonny.Repository.Data;
 
 namespace Sonny.WebApi
 {
@@ -26,6 +33,14 @@ namespace Sonny.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<RunInformation>();
+            services.AddScoped<ISonnyRepository, SonnyRepository>();
+            services.AddCors();
+            services.AddDbContext<SonnyDbContext>(
+                _mySql => _mySql
+                .UseMySql(Configuration.GetConnectionString("SonnyDb"), _migration =>
+                 _migration.MigrationsAssembly("Sonny.WebApi")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +54,7 @@ namespace Sonny.WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(_cors => _cors.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

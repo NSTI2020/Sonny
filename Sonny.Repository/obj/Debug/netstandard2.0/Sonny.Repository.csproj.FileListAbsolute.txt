@@ -6,7 +6,7 @@ C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\bin\Debug\netstandard2.0\Son
 C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.csprojAssemblyReference.cache
 C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.AssemblyInfoInputs.cache
 C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.AssemblyInfo.cs
-C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.csproj.CoreCompileInputs.cache
 C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.csproj.CopyComplete
 C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.dll
 C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.pdb
+C:\Users\Marcus\Desktop\Apps\Sonny\Sonny.Repository\obj\Debug\netstandard2.0\Sonny.Repository.csproj.CoreCompileInputs.cache

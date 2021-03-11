@@ -1,0 +1,75 @@
+<mat-tab-group>
+    <mat-tab label="Rede">
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Configurações
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <i class="fas fa-eye fa-2x"></i>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <br>
+                <div id="divNetInfo" fxLayout="row">
+                    <table id="tab">
+                        <tr>
+                            <th class="form-group col-md-8">
+                                Adaptador de rede:
+                            </th>
+                            <td>
+                                {{NetInfo.adapterName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="form-group col-md-8">
+                                Endereço Ip:
+                            </th>
+
+                            <td>
+                                {{NetInfo.ip}}
+                            </td>
+                        </tr>
+                        <th class="form-group col-md-8">
+                            Gateway Padrão:
+                        </th>
+                        <td>
+                            {{NetInfo.defaultGateway}}
+                        </td>
+                        <tr>
+                            <th class="form-group col-md-8">
+                                Servidores DNS :
+                            </th>
+                            <td>
+                                {{NetInfo.dnsPri}}
+                                &nbsp;
+                                &nbsp;
+                                {{NetInfo.dnsSec}}
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="form-group col-md-8">
+                                Servidor DHCP:
+                            </th>
+                            <td>
+                                {{NetInfo.dhcpServer}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="form-group col-md-8">
+                                Endereço MAC:
+                            </th>
+                            <td>
+                                {{NetInfo.macAddress}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+</mat-tab-group>

@@ -1,4 +1,4 @@
-cd tools
-start .net.bat
+cd tool
+start net.bat
 ngserve.bat
 exit
