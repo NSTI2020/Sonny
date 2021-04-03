@@ -1,0 +1,74 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div id="generalDiv">
+    <div id="search">
+        <tr>
+            <mat-form-field>
+                <mat-label>Pesquisar...</mat-label>
+                <input matInput [(ngModel)]="FilteringString" placeholder="Clientes...">
+            </mat-form-field>
+        </tr>
+        <div id="btnNew">
+            <button (click)="openDialog()" matTooltip="Adiciona um novo registro." id="registerCli" mat-button color="primary">
+                <mat-icon class="material-icons md-48">library_add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <mat-accordion *ngFor="let client of FilteredArray" class="example-headers-align">
+        <mat-expansion-panel hideToggle>
+            <hr>
+            <mat-expansion-panel-header>
+                <mat-panel-title id="titleClient" class="fab fa-connectdevelop fa-2x">
+                    &nbsp; &nbsp;{{client.name}}
+                </mat-panel-title>
+                <mat-panel-description id="description">
+                    <i id="expandIcon" class="fas fa-chevron-circle-down fa-2x"></i>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+                <table>
+                    <thead id="divData">
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{client.contact.email}}</td>
+
+                        </tr>
+                        <br>
+                        <tr>
+                            <th>Celular:</th>
+                            <td>{{client.contact.cel}}</td>
+                            <div>
+                                <i matTooltip="Todas as informações TÉCNICAS sobre {{client.name}}" id="gear" class="fas fa-cogs fa-5x"></i>
+
+                                <i (click)="openDialog()" matTooltip="Todas as informações sobre {{client.name}}" id="alldetails" class="fas fa-info-circle fa-5x"></i>
+                            </div>
+                        </tr>
+                        <br>
+                        <tr>
+                            <th>Bairro:</th>
+                            <td>{{client.address.neighborhood}}</td>
+                        </tr>
+
+                    </thead>
+                </table>
+                <br>
+            </div>
+            <div>
+                <mat-action-row>
+                    <br>
+
+                    <div id="delete">
+                        <h3 matTooltip="Deletar registro." class="far fa-trash-alt" [routerLink]="['/client', client.id, 'edit']" routerLinkActive="router-link-active"></h3>
+                    </div>
+                    <div id="edit">
+                        <h3 (click)="openDialogEdit()" matTooltip="Editar registro." class="fas fa-edit fa-2x"></h3>
+                    </div>
+
+                </mat-action-row>
+            </div>
+        </mat-expansion-panel>
+
+        <br>
+    </mat-accordion>
+</div>

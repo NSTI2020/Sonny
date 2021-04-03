@@ -26,7 +26,14 @@ namespace Sonny.Repository.Data
 
         public void Update<T>(T entity) where T : class
         {
+            
             _context.Update(entity);
+           
+        }
+          public void Attac<T>(T entity) where T : class
+        {
+            _context.Attach(entity);
+           
         }
         public async Task<bool> SaveChangesAsync()
         {
@@ -38,31 +45,27 @@ namespace Sonny.Repository.Data
             return false;
         }
 
-        public async Task<Client[]> GetAllClientsAsync()
+        public async Task<ClientEntity[]> GetAllClientsAsync()
         {
-            IQueryable<Client> query = _context.Clients
+            IQueryable<ClientEntity> query = _context.Clients
+            
             .Include(_address => _address.Address)
-            .Include(_contact => _contact.Contact)
-            .ThenInclude(_pN => _pN.phoneNumberUnique)
-            .Include(_contact => _contact.Contact)
-            .ThenInclude(_sU => _sU.socialUnique);
-
+            .Include(_contact => _contact.Contact);
+            
             query = query.OrderBy(_name => _name.Name);
 
             return await query.ToArrayAsync();
         }
 
 
-        public async Task<Client> GetClientByIdAsync(int id)
+        public async Task<ClientEntity> GetClientByIdAsync(int id)
         {
-            IQueryable<Client> query = _context.Clients
+            IQueryable<ClientEntity> query = _context.Clients
+            .AsTracking()
             .Include(_address => _address.Address)
-            .Include(_contact => _contact.Contact)
-            .ThenInclude(_pN => _pN.phoneNumberUnique)
-            .Include(_contact => _contact.Contact)
-            .ThenInclude(_sU => _sU.socialUnique);
-
-            Client entity = await query.FirstOrDefaultAsync(_client => _client.Id == id);
+            .Include(_contact => _contact.Contact);
+            
+            ClientEntity entity = await query.FirstOrDefaultAsync(_client => _client.Id == id);
 
             return entity;
         }
@@ -96,6 +99,7 @@ namespace Sonny.Repository.Data
         public async Task<Contact> GetContactByIdAsync(int id)
         {
             IQueryable<Contact> query = _context.Contacts
+            .AsTracking()
            .OrderBy(_phone => _phone.Email);
             Contact contact = await query.FirstOrDefaultAsync(_contact => _contact.Id == id);
             return contact;

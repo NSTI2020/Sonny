@@ -10,11 +10,12 @@ namespace Sonny.Repository.Data
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;
+        void Attac<T>(T entity) where T : class;
         Task<bool> SaveChangesAsync();
 
         //Gets
-        Task<Client[]> GetAllClientsAsync();
-        Task<Client> GetClientByIdAsync(int id);
+        Task<ClientEntity[]> GetAllClientsAsync();
+        Task<ClientEntity> GetClientByIdAsync(int id);
 
         //Address
         Task<Address[]> GetAllAddressesAsync();

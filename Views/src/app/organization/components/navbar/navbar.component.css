@@ -1,0 +1,22 @@
+    #logo {
+        margin-left: 35px;
+    }
+    
+    .navbar {
+        background-color: #183f17;
+        color: honeydew;
+    }
+    
+    .navbar li a,
+    .navbar .navbar-brand {
+        color: #fff !important;
+    }
+    
+    .mat-option {
+        color: greenyellow;
+        background-color: rgb(7, 68, 34);
+    }
+    
+    #menuOperationDropDown {
+        margin-left: 50%;
+    }

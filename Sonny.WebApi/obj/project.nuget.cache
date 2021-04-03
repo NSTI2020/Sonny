@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D1DzofUIc9I1L6PvkWaNFrarpEacw8vUmVMKVRxS/69fV4PxirhicYGJj5cyLOVs2/tPc6ZGfvUYCj5Dt+3lYA==",
+  "dgSpecHash": "3TYoFsRr38NvipG/HyOastDh63I7qmPUdu5dHkH5gRs9RJ7tTnO4hl3YF37iXniSSrhpGhNfiPm2HLd5CMMa8Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\sonny.webapi\\Sonny.WebApi.csproj",
+  "projectFilePath": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\Sonny.WebApi\\Sonny.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marcus\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Marcus\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

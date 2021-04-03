@@ -1,0 +1,40 @@
+<div>
+    <form [formGroup]="registerform">
+        <table>
+            <thead>
+                <h1>Cadastro Clientes</h1>
+            </thead>
+            <tBody>
+                <tr>
+                    <mat-form-field>
+                        <mat-label>Nome</mat-label>
+                        <input matInput formControlName="name">
+                    </mat-form-field>
+                </tr>
+                &nbsp;
+                <div formGroupName="contact">
+                    <tr>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email">
+                        </mat-form-field>
+                    </tr>
+                    &nbsp;
+                    <tr>
+                        <mat-form-field>
+                            <mat-label> Cel</mat-label>
+                            <input matInput formControlName="cel">
+                        </mat-form-field>
+                        <mat-checkbox formControlName="isZap">Zap</mat-checkbox>
+                    </tr>
+                </div>
+                <div>
+                    <tr>
+                    <button color="primary" (click)=save()>
+                        Salvar
+                    </button>
+                </tr>
+                </div>
+        </table>
+    </form>
+</div>

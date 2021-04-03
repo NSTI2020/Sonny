@@ -1761,11 +1761,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\sonny.webapi\\Sonny.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\Sonny.WebApi\\Sonny.WebApi.csproj",
       "projectName": "Sonny.WebApi",
-      "projectPath": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\sonny.webapi\\Sonny.WebApi.csproj",
+      "projectPath": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\Sonny.WebApi\\Sonny.WebApi.csproj",
       "packagesPath": "C:\\Users\\Marcus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\sonny.webapi\\obj\\",
+      "outputPath": "C:\\Users\\Marcus\\Desktop\\Apps\\Sonny\\Sonny.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
