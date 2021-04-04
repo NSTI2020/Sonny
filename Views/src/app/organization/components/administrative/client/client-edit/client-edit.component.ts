@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Address } from "src/app/_models/Address";
 import { ClientEntity } from "src/app/_models/ClientEntity";
 import { Contact } from "src/app/_models/Contact";
-import { clientEntityService } from '../../../../../_services/clientEntity.Service';
+import { ClientEntityService } from '../../../../../_services/clientEntity.Service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -12,7 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     selector: 'app-client-edit',
     templateUrl: './client-edit.component.html',
     styleUrls: ['./client-edit.component.css'],
-    providers: [clientEntityService]
+    providers: [ClientEntityService]
 })
 
 export class ClientEditComponent implements OnInit {
@@ -33,14 +33,14 @@ export class ClientEditComponent implements OnInit {
     constructor(
         private _Fb: FormBuilder
         , private _Route: ActivatedRoute
-        , private _CliService: clientEntityService
+        , private _CliService: ClientEntityService
         , private _SnackBar: MatSnackBar
-        , public dialogRef: MatDialogRef<ClientEditComponent>
+        , public _DialogRef: MatDialogRef<ClientEditComponent>
         , @Inject(MAT_DIALOG_DATA) public data: ClientEntity) {
-        console.log(data)
+     
     }
     onNoClick(): void {
-        this.dialogRef.close();
+        this._DialogRef.close();
     }
 
     RequiredValidation(fControl: FormControl) {
@@ -53,9 +53,7 @@ export class ClientEditComponent implements OnInit {
         this._client = Object.assign(this._client, this._clientRegisterForm.value);
         this._address = Object.assign(this._address, this._addressRegisterForm.value);
         this._contact = Object.assign(this._contact, this._contactRegisterForm.value);
-
         this._CliService.put(this._client).subscribe(() => {
-
             //Address
             this._CliService.putAddress(this._address).subscribe(() => {
             }, error => {
@@ -70,15 +68,11 @@ export class ClientEditComponent implements OnInit {
                 duration: 2000
             });
         }, error => {
-            console.log(error);
-
+           console.log(error);
             this._SnackBar.open('Registro não atualizado, erro: ', error, {
                 duration: 2000
             });
         });
-
-
-
     }
 
     BtnSaveValidate(): boolean {
@@ -97,16 +91,11 @@ export class ClientEditComponent implements OnInit {
             return 'Inválido!'
         }
     }
-
-
-
     ClientFormValidation() {
         this.PersonalFrm();
         this.AddressFrm();
         this.ContactFrm();
     }
-
-
     PersonalFrm(): FormGroup {
         return this._clientRegisterForm = this._Fb.group({
             name: ['', [Validators.required, Validators.maxLength(200)]],
@@ -142,17 +131,14 @@ export class ClientEditComponent implements OnInit {
         });
     }
 
-
-
     getById() {
-        //        const Id = this._Route.snapshot.params['id'];
 
-        this._Route.params.subscribe((id: any) => {
-            console.log(id)
-        })
-
-        /*
-                this._CliService.getById(Id).subscribe(
+        console.log();
+        this._clientRegisterForm.patchValue(this.data);
+        this._addressRegisterForm.patchValue(this.data.address);
+        this._contactRegisterForm.patchValue(this.data.contact);
+/*
+                this._CliService.getById(this.data.id).subscribe(
                     (returnClient: ClientEntity) => {
                         this._client = returnClient;
                         this._address = returnClient.address;
@@ -191,12 +177,11 @@ export class ClientEditComponent implements OnInit {
         }
     */
     ngOnInit(): void {
-        var idRoute = this._Route.params.subscribe((cli: any) => {
-            console.log(cli.id);
-        })
-       // console.log(idRoute);
+   
+      //  this._client = this.data;
+   //     console.log(this.data);
         this.ClientFormValidation();
-        //   this.getById();
+           this.getById();
         this._arrayOfTypes = new Array<string>();
         this._arrayOfTypes.push('PJ', 'PF');
     }

@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { ClientEntity } from 'src/app/_models/ClientEntity';
-import { clientEntityService } from 'src/app/_services/clientEntity.Service';
-import { ClientCreateComponent } from '../client-create/client-create.component';
+import { ClientEntityService } from 'src/app/_services/clientEntity.Service';
+import { ClientDeleteComponent } from '../cliente-delete/cliente-delete.component';
 import { ClientEditComponent } from '../client-edit/client-edit.component';
+import { ClientCreateComponent } from '../client-create/client-create.component';
 import { MatDialog } from '@angular/material/dialog'
+import { ClientDetailsComponent } from '../client-details/client-details.component';
 
 
 
@@ -15,35 +17,27 @@ import { MatDialog } from '@angular/material/dialog'
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.css'],
-  providers: [clientEntityService]
+  providers: [ClientEntityService]
 })
 
 
-export class ClientListComponent implements OnDestroy {
+export class ClientListComponent implements OnInit {
 
   _clientEntity: ClientEntity[] = new Array<ClientEntity>();;
-  _client: ClientEntity = new ClientEntity();
+  _clientById: ClientEntity = new ClientEntity();
   _client2Test: ClientEntity = new ClientEntity();
-  registerform: FormGroup;
-  _routeQueryParams$: Subscription;
+  _showHideNav2: boolean = true;
+  _Id: number;
+
+
+
 
   constructor(
-    private _CliService: clientEntityService
+    private _CliService: ClientEntityService
     , private _ActivatedRoute: ActivatedRoute
     , private _Dialog: MatDialog
-    , private _Router: Router) {
+    , private _Router: Router) { }
 
-    this._routeQueryParams$ = _ActivatedRoute.queryParams.subscribe(params => {
-      if (params['dialog']) {
-        this.openDialogEdit();
-      }
-    });
-
-
-  }
-  ngOnDestroy(): void {
-    this._routeQueryParams$.unsubscribe();
-  }
 
   //Search
   _stringFiltering: string;
@@ -69,29 +63,60 @@ export class ClientListComponent implements OnDestroy {
       _client.name.toLocaleLowerCase().indexOf(_filteredBy) !== -1);
   }
 
-  openDialog() {
+
+  Edit(_Id: number) {
+    //get id and sending by template html
+    this._clientById = this._clientEntity.find(_id => _id.id == _Id);
     const dialogRef = this._Dialog.open(ClientEditComponent, {
+      width: '450px',
+      data: this._clientById
+    });
+    //disable closing window when clicking outside screen.(click)="openDialogEdit(client.id)"
+    dialogRef.disableClose = true;
+  }
+
+  delete(_Id: number) {
+    //get id and sending by template html
+    this._clientById = this._clientEntity.find(_id => _id.id == _Id);
+    const dialogRef = this._Dialog.open(ClientDeleteComponent, {
+      width: '450px',
+      data: this._clientById
+    });
+    dialogRef.disableClose = true;
+  }
+
+  newRegister() {
+    //get id and sending by template html
+    const dialogRef = this._Dialog.open(ClientCreateComponent, {
+      width: '350px',
+      height: '560px'
 
     });
     dialogRef.disableClose = true;
-    dialogRef.componentInstance
-  }
-
-  openDialogEdit() {
-    const dialogRef = this._Dialog.open(ClientEditComponent, {
-      width: '450px',
-      data: { CliEntity: this._client2Test}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this._Router.navigate(['id'], { relativeTo: this._ActivatedRoute });
-    });
-
-
+    //dialogRef.afterClosed.caller(this.GetAll())
   }
 
 
+  details(id: number) {
+    this._clientById = this._clientEntity.find(_id => _id.id == id);
+    const dialogRef = this._Dialog.open(ClientDetailsComponent, {
+      data: this._clientById
+    });
+    dialogRef.disableClose = true;
+  }
 
+  tec() {
+
+    if (this._showHideNav2) {
+      this._showHideNav2 = false;
+    }
+    else{
+      this._showHideNav2 = true;
+    }
+
+
+
+  }
 
   GetAll(): void {
     this._CliService.getAll().subscribe(
@@ -99,9 +124,9 @@ export class ClientListComponent implements OnDestroy {
         this._clientEntity = resultGetCli;
         this.FilteredArray = resultGetCli;
 
-        // console.log(resultGetCli);
+
       }, error => {
-        //  console.log(error);
+        //  //console.log(error);
       }
     )
   }
@@ -112,6 +137,8 @@ export class ClientListComponent implements OnDestroy {
 
   ngOnInit(): void {
     this.GetAll();
+
+
   }
 
 

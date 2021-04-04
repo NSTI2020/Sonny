@@ -87,11 +87,16 @@ namespace Sonny.WebApi.Controllers
 
         }
 
-        [HttpDelete("client/{model}")]
-        public async Task<IActionResult> Delete(int id, ClientEntity model)
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            //ClientEntity result = await _repo.GetClientByIdAsync(id);
-            _repo.Delete(model);
+            var result = await _repo.GetClientByIdAsync(id);
+            if(result == null)
+            return BadRequest("Deu Ruim.");
+
+            _repo.Delete(result);
+
+
             if (await _repo.SaveChangesAsync())
             {
                 return Ok();
@@ -100,9 +105,6 @@ namespace Sonny.WebApi.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "A base de dados falhou");
             }
-
-
-
         }
 
 

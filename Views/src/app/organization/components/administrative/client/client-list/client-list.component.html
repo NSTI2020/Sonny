@@ -8,7 +8,7 @@
             </mat-form-field>
         </tr>
         <div id="btnNew">
-            <button (click)="openDialog()" matTooltip="Adiciona um novo registro." id="registerCli" mat-button color="primary">
+            <button (click)="newRegister()" matTooltip="Adiciona um novo registro." id="registerCli" mat-button color="primary">
                 <mat-icon class="material-icons md-48">library_add</mat-icon>
             </button>
         </div>
@@ -17,7 +17,9 @@
     <br>
     <mat-accordion *ngFor="let client of FilteredArray" class="example-headers-align">
         <mat-expansion-panel hideToggle>
+            <app-navbar2 *ngIf="!_showHideNav2"></app-navbar2>
             <hr>
+
             <mat-expansion-panel-header>
                 <mat-panel-title id="titleClient" class="fab fa-connectdevelop fa-2x">
                     &nbsp; &nbsp;{{client.name}}
@@ -32,16 +34,16 @@
                         <tr>
                             <th>Email:</th>
                             <td>{{client.contact.email}}</td>
-
                         </tr>
                         <br>
                         <tr>
                             <th>Celular:</th>
                             <td>{{client.contact.cel}}</td>
                             <div>
-                                <i matTooltip="Todas as informações TÉCNICAS sobre {{client.name}}" id="gear" class="fas fa-cogs fa-5x"></i>
-
-                                <i (click)="openDialog()" matTooltip="Todas as informações sobre {{client.name}}" id="alldetails" class="fas fa-info-circle fa-5x"></i>
+                                <tr>
+                                    <i (click)="tec()" matTooltip="Todas as informações TÉCNICAS sobre {{client.name}}" class="fas fa-cogs fa-5x" id="tecdetails"></i>
+                                    <i (click)="details(client.id)" matTooltip="Todas as informações sobre {{client.name}}" id="alldetails" class="fas fa-info-circle fa-5x"></i>
+                                </tr>
                             </div>
                         </tr>
                         <br>
@@ -57,14 +59,12 @@
             <div>
                 <mat-action-row>
                     <br>
-
-                    <div id="delete">
-                        <h3 matTooltip="Deletar registro." class="far fa-trash-alt" [routerLink]="['/client', client.id, 'edit']" routerLinkActive="router-link-active"></h3>
+                    <div id="del">
+                        <h3 (click)="delete(client.id)" matTooltip="Deletar registro de {{client.name}}." class="far fa-trash-alt"></h3>
                     </div>
                     <div id="edit">
-                        <h3 (click)="openDialogEdit()" matTooltip="Editar registro." class="fas fa-edit fa-2x"></h3>
+                        <h3 (click)="Edit(client.id)" matTooltip="Editar registro de {{client.name}}" class="fas fa-edit fa-2x"></h3>
                     </div>
-
                 </mat-action-row>
             </div>
         </mat-expansion-panel>

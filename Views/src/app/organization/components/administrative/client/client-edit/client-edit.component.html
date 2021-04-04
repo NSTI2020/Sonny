@@ -52,7 +52,7 @@
                                 </tr>
                                 <br>
                                 <tr>
-                                    {{this.data.name}}
+
                                     <mat-label id="assured">Assegurado</mat-label>
                                     &nbsp;
                                     <mat-checkbox [(ngModel)]="_assured" formControlName="assured"></mat-checkbox>
@@ -241,5 +241,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Fechar</button>
+
     <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
 </mat-dialog-actions>

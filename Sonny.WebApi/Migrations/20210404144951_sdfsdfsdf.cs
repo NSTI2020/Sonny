@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sonny.WebApi.Migrations
 {
-    public partial class first : Migration
+    public partial class sdfsdfsdf : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

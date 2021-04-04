@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientCreateComponent } from '../components/administrative/client/client-create/client-create.component';
 import { ClientListComponent } from '../components/administrative/client/client-list/client-list.component';
 import { ClientEditComponent } from '../components/administrative/client/client-edit/client-edit.component';
+import { ClientDetailsComponent } from "../components/administrative/client/client-details/client-details.component";
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
     { path: '', component: ClientListComponent },
     { path: 'client/:id/edit', component: ClientEditComponent },
     { path: 'newclient', component: ClientCreateComponent },
-    { path: 'listclient', component: ClientListComponent }
+    { path: 'listclient', component: ClientListComponent },
+    { path: 'detailsclient', component: ClientDetailsComponent },
 
 ];
 @NgModule({

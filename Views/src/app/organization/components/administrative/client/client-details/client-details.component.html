@@ -1,1 +1,117 @@
-CLIENT DETAILS
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<h2 mat-dialog-title>{{data.name + " "| uppercase}} </h2>
+<mat-dialog-content class="mat-typography">
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>Particulares</tr>
+                <tr class="table table-striped">
+                    <tr>
+                        <th>CÓDIGO:</th>
+                        <td>{{data.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>CPF/CNPJ:</th>
+                        <td>{{data.cnpj}}</td>
+                    </tr>
+                    <tr>
+                        <th>RESPONSÁVEL:</th>
+                        <td>{{data.responsible}}</td>
+                    </tr>
+                    <tr>
+                        <th>COMENTÁTIOS:</th>
+                        <td>{{data.comments}}</td>
+                    </tr>
+                    <tr>
+                        <th>TIPO CLIENTE:</th>
+                        <td>{{data.clienttype}}</td>
+                    </tr>
+                    <tr>
+                        <th>ASSEGURADO:</th>
+                        <td>{{data.assured}}</td>
+                    </tr>
+                    <tr>
+                        <th>MENSAL:</th>
+                        <td>{{data.payment}}
+                            <td>
+                    </tr>
+
+                    <mat-divider></mat-divider>
+                    <tr>Endereço</tr>
+
+                    <tr>
+                        <th>RUA:</th>
+                        {{data.address.street}}
+                    </tr>
+                    <tr>
+                        <th>NÚMERO</th>
+                        {{data.address.number}}
+                    </tr>
+                    <tr>
+                        <th>BAIRRO:</th>
+                        {{data.address.neighborhood}}
+                    </tr>
+                    <tr>
+                        <th>CIDADE:</th>
+                        {{data.address.city}}
+                    </tr>
+                    <tr>
+                        <th>Estado:</th>
+                        {{data.address.state}}
+                    </tr>
+                    <tr>
+                        <th>COMPLEMENTO:</th>
+                        {{data.address.complement}}
+                    </tr>
+
+
+                    <mat-divider></mat-divider>
+                    <tr>CONTATOS...</tr>
+
+                    <tr>
+                        <th>EMAIL:</th>
+                        {{data.contact.email}}
+                    </tr>
+                    <tr>
+                        <th>CEL:</th>
+                        {{data.contact.cel}}
+                    </tr>
+                    <tr>
+                        <th>WHATSAPP:</th>
+                        {{data.contact.zap}}
+                    </tr>
+                    <tr>
+                        <th>TEL:</th>
+                        {{data.contact.landline}}
+                    </tr>
+                    <tr>
+                        <th>LINKEDIN:</th>
+                        {{data.contact.linkedin}}
+                    </tr>
+                    <tr>
+                        <th>FACEBOOK:</th>
+                        {{data.contact.facebook}}
+                    </tr>
+                    <tr>
+                        <th>INSTAGRAM:</th>
+                        {{data.contact.instagram}}
+                    </tr>
+                    <tr>
+                        <th>TWITTER:</th>
+                        {{data.contact.twitter}}
+                    </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-outline-success">Fechar</button>
+</mat-dialog-actions>

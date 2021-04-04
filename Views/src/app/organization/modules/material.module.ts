@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/Checkbox'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 //import { MatDatepicker } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
         MatSnackBarModule,
         FormsModule,
         MatTooltipModule,
+        MatDividerModule
                         
 
 
@@ -59,7 +61,9 @@ import { FormsModule } from '@angular/forms';
         MatSelectModule,
         MatSnackBarModule,
         FormsModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDividerModule
+
         
 
 

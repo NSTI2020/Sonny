@@ -21,6 +21,11 @@
     font-feature-settings: 'liga';
 }
 
+#tecdetails {
+    position: absolute;
+    margin-left: 60%;
+}
+
 #edit {
     position: relative;
     margin-left: 90%;
@@ -28,7 +33,7 @@
     margin-top: 2%;
 }
 
-#delete {
+#del {
     position: relative;
     margin-top: 2%;
 }

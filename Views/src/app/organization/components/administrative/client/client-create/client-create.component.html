@@ -1,243 +1,72 @@
-<h2 mat-dialog-title>Novo Registro...</h2>
-<mat-dialog-content>
-    <div id="generalDiv">
-        <mat-tab-group>
-            <form [formGroup]="_clientRegisterForm">
-                <div id="clientDivForm">
-                    <mat-tab label="Dados Particulares">
-                        <table>
-                            <thead>
-                                <h1>Dados Particulares</h1>
-                            </thead>
-                            <tBody>
-                                <tr>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Nome</mat-label>
-                                        <input matInput placeholder="Insira o nome" formControlName="name">
-                                        <mat-error *ngIf="_clientRegisterForm.get('name').hasError('required')">Nome é obrigatório.
-                                        </mat-error>
-                                        <mat-error *ngIf="_clientRegisterForm.get('name').hasError('maxlength')">Nome inválido, deve conter no máximo 200 caracteres.</mat-error>
-                                    </mat-form-field>
-
-                                </tr>
-                                <br>
-                                <tr>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>CNPJ/CPF</mat-label>
-                                        <input matInput formControlName="cnpj">
-                                        <mat-error *ngIf="_clientRegisterForm.get('cnpj').hasError('minlength')">No mínimo 10 caracteres, são nescessários para este campo.</mat-error>
-                                        <mat-error *ngIf="_clientRegisterForm.get('cnpj').hasError('maxlength')">No máximo 15 caracteres são nescessários para este campo.</mat-error>
-                                    </mat-form-field>
-                                </tr>
-                                <br>
-                                <tr>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Responsável</mat-label>
-                                        <input matInput formControlName="responsible">
-                                        <mat-error *ngIf="_clientRegisterForm.get('responsible').hasError('maxlength')">No máximo 200 caracteres são nescessários para este campo.</mat-error>
-                                    </mat-form-field>
-                                </tr>
-                                <br>
-                                <tr>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Tipo</mat-label>
-                                        <mat-select formControlName="clienttype">
-                                            <mat-option *ngFor="let typeValue of _arrayOfTypes" [value]="typeValue">
-                                                {{typeValue}}
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
-                                </tr>
-                                <br>
-                                <tr>
-                                    <mat-label id="assured">Assegurado</mat-label>
-                                    &nbsp;
-                                    <mat-checkbox [(ngModel)]="_assured" formControlName="assured"></mat-checkbox>
-                                    <div *ngIf="_assured">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Valor Mensal</mat-label>
-                                            <input matInput formControlName="payment" placeholder="Valor no formato R$">
-                                            <mat-error *ngIf="_clientRegisterForm.get('payment').hasError('required')">Este campo é de preenchimento obrigatório.</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </tr>
-                                <br>
-                                <tr>
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Obs:</mat-label>
-                                        <input matInput formControlName="comments">
-                                        <mat-error *ngIf="_clientRegisterForm.get('comments').hasError('maxlength')">Este campo pode conter no máximo, 700 caracteres.</mat-error>
-                                    </mat-form-field>
-                                </tr>
-                            </tBody>
-                        </table>
-                    </mat-tab>
-                </div>
-            </form>
-
-            <form [formGroup]="_addressRegisterForm">
-                <mat-tab label="Endereços">
-                    <table>
-                        <thead>
-                            <h1>Endereço</h1>
-                        </thead>
-                        <tBody>
+<div>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="_shortRegisterForm">
+            <table>
+                <thead>
+                    <h2 mat-dialog-title>Cadastro...</h2>
+                </thead>
+                <tbody>
+                    <tr>
+                        <mat-form-field>
+                            <mat-label>Nome</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="_shortRegisterForm.get('name').hasError('required')">Nome é obrigatório.
+                            </mat-error>
+                            <mat-error *ngIf="_shortRegisterForm.get('name').hasError('maxlength')">Nome inválido, deve conter no máximo 200 caracteres.</mat-error>
+                        </mat-form-field>
+                    </tr>
+                    &nbsp;
+                    <tr>
+                        <mat-form-field>
+                            <mat-label>Cpf/Cnpj</mat-label>
+                            <input matInput formControlName="cnjp">
+                            <mat-error *ngIf="_shortRegisterForm.get('cnpj').hasError('minlength')">No mínimo 10 caracteres, são nescessários para este campo.</mat-error>
+                            <mat-error *ngIf="_shortRegisterForm.get('cnpj').hasError('maxlength')">No máximo 15 caracteres são nescessários para este campo.</mat-error>
+                        </mat-form-field>
+                    </tr>
+                    &nbsp;
+                    <div formGroup="contact">
+                        <tr>
+                            <mat-form-field>
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email">
+                            </mat-form-field>
+                        </tr>
+                        &nbsp;
+                        <tr>
+                            <mat-form-field>
+                                <mat-label> Cel</mat-label>
+                                <input matInput formControlName="cel">
+                            </mat-form-field>
+                            <mat-checkbox formControlName="isZap">Zap</mat-checkbox>
+                        </tr>
+                    </div>
+                    <div>
+                        <div formGroup="address">
                             <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Rua</mat-label>
-                                    <input matInput formControlName="street">
-                                    <mat-error *ngIf="_addressRegisterForm.get('street').hasError('required')">Este campo é de preenchimento obrigatório.</mat-error>
-                                    <mat-error *ngIf="_addressRegisterForm.get('street').hasError('maxlength')">Este campo deve conter no máximo 500 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Número</mat-label>
-                                    <input matInput formControlName="number">
-                                    <mat-error *ngIf="_addressRegisterForm.get('number').hasError('required')">Este campo é de preenchimento obrigatório.</mat-error>
-                                    <mat-error *ngIf="_addressRegisterForm.get('number').hasError('maxlength')">Este campo deve conter no máximo 10 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Bairro</mat-label>
+                                <mat-form-field>
+                                    <mat-label>Bairro:</mat-label>
                                     <input matInput formControlName="neighborhood">
-                                    <mat-error *ngIf="_addressRegisterForm.get('neighborhood').hasError('required')">Este campo é de preenchimento obrigatório.</mat-error>
-                                    <mat-error *ngIf="_addressRegisterForm.get('neighborhood').hasError('maxlength')">Este campo deve conter no máximo 10 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Cidade</mat-label>
-                                    <input matInput formControlName="city">
-                                    <mat-error *ngIf="_addressRegisterForm.get('city').hasError('required')">Este campo é de preenchimento obrigatório.</mat-error>
-                                    <mat-error *ngIf="_addressRegisterForm.get('city').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Estado</mat-label>
-                                    <input matInput formControlName="state">
-                                    <mat-error *ngIf="_addressRegisterForm.get('state').hasError('required')">Este campo é de preenchimento obrigatório.</mat-error>
-                                    <mat-error *ngIf="_addressRegisterForm.get('state').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Complemento</mat-label>
-                                    <input matInput formControlName="complement">
-                                </mat-form-field>
-                            </tr>
-                        </tBody>
-                    </table>
-                </mat-tab>
-            </form>
-            <form [formGroup]="_contactRegisterForm">
-                <mat-tab label="Contatos">
-                    <table>
-                        <thead>
-                            <h1>Contatos</h1>
-                        </thead>
-                        <tBody>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>E-mail</mat-label>
-                                    <input matInput formControlName="email">
-                                    <mat-error *ngIf="_contactRegisterForm.get('email').hasError('email')">E-mail inválido.
-                                    </mat-error>
-                                    <mat-error *ngIf="_contactRegisterForm.get('email').hasError('required')">Preenchimento é obrigatório.
-                                    </mat-error>
-
                                 </mat-form-field>
                             </tr>
                             &nbsp;
-                            <br>
                             <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label> Celular:</mat-label>
-                                    <div id="zap">
-                                        <mat-checkbox [(ngModel)]="_IsZap" formControlName="iszap">ZAP</mat-checkbox>
-                                    </div>
-                                    <input matInput formControlName="cel">
-                                    <mat-error *ngIf="_contactRegisterForm.get('cel').hasError('required')">Campo celular deve ser preenchido.</mat-error>
-                                    <mat-error *ngIf="_contactRegisterForm.get('cel').hasError('minlength')">Campo celular deve conter no mínimo 9 caracteres.</mat-error>
-                                    <mat-error *ngIf="_contactRegisterForm.get('cel').hasError('maxlength')">Campo celular deve conter no máximo 15 caracteres.</mat-error>
+                                <mat-form-field>
+                                    <mat-label> Rua:</mat-label>
+                                    <input matInput formControlName="street">
                                 </mat-form-field>
                             </tr>
-                            &nbsp;
-                            <br>
-                            <tr>
-                                <div *ngIf="!_IsZap">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>WhatsApp</mat-label>
-                                        <input matInput formControlName="zap">
-                                        <mat-error *ngIf="_contactRegisterForm.get('zap').hasError('minlength')">Campo zap deve conter no mínimo 9 caracteres.</mat-error>
-                                        <mat-error *ngIf="_contactRegisterForm.get('zap').hasError('maxlength')">Campo zap deve conter no máximo 15 caracteres.</mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Tel. Fixo:</mat-label>
-                                    <input matInput formControlName="landline">
-                                    <mat-error *ngIf="_contactRegisterForm.get('landline').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Linkedin</mat-label>
-                                    <input matInput formControlName="linkedin">
-                                    <mat-error *ngIf="_contactRegisterForm.get('landline').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Facebook</mat-label>
-                                    <input matInput formControlName="facebook">
-                                    <mat-error *ngIf="_contactRegisterForm.get('landline').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Instagram</mat-label>
-                                    <input matInput formControlName="instagram">
-                                    <mat-error *ngIf="_contactRegisterForm.get('landline').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                            <br>
-                            <tr>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Twitter</mat-label>
-                                    <input matInput formControlName="twitter">
-                                    <mat-error *ngIf="_contactRegisterForm.get('landline').hasError('maxlength')">Este campo deve conter no máximo 100 caracteres.</mat-error>
-                                </mat-form-field>
-                            </tr>
-                        </tBody>
-                    </table>
-                </mat-tab>
-            </form>
+                        </div>
+                    </div>
+                </tbody>
+                <tfoot>
 
-        </mat-tab-group>
-
-        <div>
-            <tr>
-                <button id="btnSave" type="button" (click)="save()" [disabled]="!BtnSaveValidate()" class="btn btn-outline-success">{{BtnSaveValidateMsg() | uppercase}}</button>
-            </tr>
-            <br>
-        </div>
-    </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Fechar</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
-</mat-dialog-actions>
+                </tfoot>
+            </table>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Fechar</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
+    </mat-dialog-actions>
+</div>

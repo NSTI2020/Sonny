@@ -8,8 +8,8 @@ using Sonny.Repository.Data;
 namespace Sonny.WebApi.Migrations
 {
     [DbContext(typeof(SonnyDbContext))]
-    [Migration("20210327181403_first")]
-    partial class first
+    [Migration("20210404144951_sdfsdfsdf")]
+    partial class sdfsdfsdf
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

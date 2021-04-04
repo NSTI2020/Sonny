@@ -10,13 +10,14 @@ import { Contact } from "../_models/Contact";
 })
 
 
-export class clientEntityService {
+export class ClientEntityService {
   constructor(private _httpClient: HttpClient) { }
   ApiUrl: string = 'http://localhost:5000/api/clients';
   ApiUrlById: string = 'http://localhost:5000/api/clients/getbyid';
   ApiUrlPut: string = 'http://localhost:5000/api/clients/put';
   AddressPut: string = 'http://localhost:5000/api/clients/addr';
   ContactPut: string = 'http://localhost:5000/api/clients/cnt';
+  ClientEntityDelete: string = 'http://localhost:5000/api/clients/delete';
   
 
   post(model: ClientEntity) {
@@ -48,7 +49,9 @@ export class clientEntityService {
     return this._httpClient.put<Contact>(`${this.ContactPut}/${model.id}`, model);
   }
 
-
+deleteClient(id: number){
+  return this._httpClient.delete<ClientEntity>(`${this.ClientEntityDelete}/${id}`);
+}
 
 }
 
